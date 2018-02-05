@@ -15,4 +15,5 @@ const getNewIndex = function(currentIndex, offset, maxIndex) {
 const handleNavClick = function(imageElement, offset) {
   imageIndex = getNewIndex(imageIndex, offset, imagePaths.length - 1);
   imageElement.attr('src', imagePaths[imageIndex]);
+  imageElement.fadeIn('fast');
 }

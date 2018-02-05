@@ -14,6 +14,12 @@ $(document).ready(function(){
   const $image = $(`<img src="${imagePaths[1]}" id="display-image"></img>`);
   $('#image-container').append($image);
   
-  $('.nav-back').on('click', () =>  handleNavClick($image, -1));
-  $('.nav-fwd').on('click', () =>  handleNavClick($image, 1));
+
+  $('.nav-back').on('click', () => {
+    $image.fadeOut('fast', () => handleNavClick($image, -1));
+  });
+
+  $('.nav-fwd').on('click', () => {
+    $image.fadeOut('fast', () =>  handleNavClick($image, 1));
+  });
 });
