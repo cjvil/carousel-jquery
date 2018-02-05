@@ -17,8 +17,7 @@ html, body, #main-container {
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center
 }
 
 #display-image {
@@ -29,4 +28,27 @@ html, body, #main-container {
 
 .nav {
   cursor: pointer;
+}
+
+.nav-back {
+  order: -1
+}
+
+@media only screen and (max-device-width : 480px) {
+  #main-container {
+    flex-wrap: wrap;
+    justify-content: center
+  }
+
+  #image-container {
+    max-height: calc(100% - 50px);
+  }
+
+  #display-image {
+    order: -1
+  }
+
+  .nav-back {
+    order: 0
+  }
 }
