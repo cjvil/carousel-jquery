@@ -1,9 +1,15 @@
-const imagePaths = [`./img/01.jpg`, `./img/02.jpg`];
+const NUM_OF_IMAGES = 10;
+const imagePaths = [];
+let imageIndex = 0;
+
+for (let i = 0; i < NUM_OF_IMAGES; i++) {
+  imagePaths.push(i < 10 ? `./img/0${i}.jpg` : `./img/${i}.jpg`);
+};
 
 $(document).ready(function(){
-  let $image = $(`<img src="${imagePaths[0]}"></img>`);
+  const $image = $(`<img src="${imagePaths[1]}" id="display-image"></img>`);
   $('#image-container').append($image);
-
-  $image.attr('src', imagePaths[1]); // TODO: move to click handler
-
+  
+  $('.nav-back').on('click', () =>  handleNavClick($image, -1));
+  $('.nav-fwd').on('click', () =>  handleNavClick($image, 1));
 });
