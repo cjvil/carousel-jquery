@@ -10,14 +10,14 @@ html, body, #main-container {
 
 #main-container {
   display: flex;
-  align-items: center
+  align-items: center;
+  height: calc(100% - 40px);
 }
 
 #image-container {
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: center
 }
 
 #display-image {
@@ -34,13 +34,22 @@ html, body, #main-container {
   order: -1
 }
 
+#dots {
+  margin-top: 10px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: space-between
+}
+
 .dot, .active-dot {
   height: 10px;
   width: 10px;
   background-color: #bbb;
   border-radius: 5px;
   display: inline-block;
-  margin-right: 30px;
+  margin: 0px 15px 0px 15px;
 }
 
 .active-dot {
@@ -63,5 +72,12 @@ html, body, #main-container {
 
   .nav-back {
     order: 0
+  }
+
+  .dot, .active-dot {
+    height: 5px;
+    width: 5px;
+    border-radius: 2.5px;
+    margin: 0px 5px 0px 5px;
   }
 }
