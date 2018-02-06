@@ -11,9 +11,17 @@ for (let i = 0; i < NUM_OF_IMAGES; i++) {
 
 $(document).ready(function(){
   // render first image
-  const $image = $(`<img src="${imagePaths[1]}" id="display-image"></img>`);
+  const $image = $(`<img src="${imagePaths[imageIndex]}" id="display-image"></img>`);
   $('#image-container').append($image);
   
+  let dotDivs = '<div id="dots">';
+  for (let i = 0; i < NUM_OF_IMAGES; i++) {
+    dotDivs += '<div class="dot"></div>';
+  };
+  $('body').append(dotDivs + '</div>');
+
+  $(`.dot:nth-child(${imageIndex + 1})`).addClass('active-dot');
+
 
   $('.nav-back').on('click', () => {
     $image.fadeOut('fast', () => handleNavClick($image, -1));
