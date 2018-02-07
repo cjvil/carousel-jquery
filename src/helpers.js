@@ -1,14 +1,13 @@
-const handleNavClick = function(imageElement, offset) {
-  // update state with new image index
-  const prevImageIndex = imageIndex;
+// offsets current image index by some number (offset) and re-renders index-based elements ($imageElement and dot indicators)
+const handleNavClick = function($imageElement, offset) {
   imageIndex = getNewIndex(imageIndex, offset, NUM_OF_IMAGES - 1);
   
-  // re-render index-dependent elements
-  updateImage(imageElement, imageIndex);
-  updateActiveDot(prevImageIndex, imageIndex);
+  updateImage($imageElement, imageIndex);
+  updateActiveDot(imageIndex);
 };
 
-// returns an index that is within bounds; loops back to opposite end of array if out of range
+// given current index and offset, returns an index that is within range (0 <= index <= maxIndex); 
+// loops back to opposite end of array if attempting to navigate out of range
 const getNewIndex = function(index, offset, maxIndex) {
   let newIndex = index + offset;
   
@@ -21,14 +20,16 @@ const getNewIndex = function(index, offset, maxIndex) {
   return newIndex;
 };
 
-const updateImage = function(imageElement, imageIndex) {
-  imageElement.fadeOut('fast', () => {
-    imageElement.attr('src', imagePaths[imageIndex]);
-    imageElement.fadeIn('fast');
+// given a new index, updates given image element's src with new path (from imagePaths array)
+const updateImage = function($imageElement, imageIndex) {
+  $imageElement.fadeOut('fast', () => {
+    $imageElement.attr('src', imagePaths[imageIndex]);
+    $imageElement.fadeIn('fast');
   });
 };
 
-const updateActiveDot = function(prevImageIndex, imageIndex) {
-  $(`.dot:nth-child(${prevImageIndex + 1})`).removeClass('active-dot');
+// moves active dot style to new index (imageIndex)
+const updateActiveDot = function(imageIndex) {
+  $('.active-dot').removeClass('active-dot');
   $(`.dot:nth-child(${imageIndex + 1})`).addClass('active-dot');
 };

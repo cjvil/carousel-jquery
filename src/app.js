@@ -1,6 +1,6 @@
 const IMG_DIR = './img/';
 const IMG_EXTENSION = '.jpg';
-const NUM_OF_IMAGES = 10;
+const NUM_OF_IMAGES = 10; // image display itself will work for > 10 images, but dot indicator layout eventually overflows
 const imagePaths = [];
 let imageIndex = 0; // index of currently displayed image
 
