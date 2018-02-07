@@ -1,4 +1,4 @@
-// returns an index that is in bounds (loops back to opposite end of array) 
+// returns an index that is within bounds (loops back to opposite end of array if out of range) 
 const getNewIndex = function(currentIndex, offset, maxIndex) {
   let newIndex = currentIndex + offset;
 
@@ -11,7 +11,7 @@ const getNewIndex = function(currentIndex, offset, maxIndex) {
   return newIndex;
 };
 
-// updates state with index of current image and re-renders image element
+// updates state with index of current image, re-renders image element and appropriate dot indicator
 const handleNavClick = function(imageElement, offset) {
   $(`.dot:nth-child(${imageIndex + 1})`).removeClass('active-dot');
 

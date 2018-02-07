@@ -14,17 +14,18 @@ $(document).ready(function(){
   const $image = $(`<img src="${imagePaths[imageIndex]}" id="display-image"></img>`);
   $('#image-container').append($image);
   
+  // render dot indicators
   let dotElements = '';
 
   for (let i = 0; i < NUM_OF_IMAGES; i++) {
     dotElements += '<div class="dot"></div>';
   };
-  
+
   $('#dot-container').append(dotElements);
 
   $(`.dot:nth-child(${imageIndex + 1})`).addClass('active-dot');
 
-
+  // handle navigation clicks
   $('.nav-back').on('click', () => {
     $image.fadeOut('fast', () => handleNavClick($image, -1));
   });
